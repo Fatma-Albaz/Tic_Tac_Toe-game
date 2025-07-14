@@ -41,7 +41,11 @@ public class XoGameActivity extends AppCompatActivity {
         playerTurnTextView.setText("Player X's turn");
     }
     private void startStopWatch() {
-        handler = new Handler();
+        if (handler == null){
+            handler = new Handler();
+        }else{
+            handler.removeCallbacks(stopWatchRunnable);
+        }
         stopWatchRunnable= new Runnable() {
             @Override
             public void run() {
